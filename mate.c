@@ -15,7 +15,8 @@ i32 main(void) {
                             .linkerFlags = "-lkextrw -lcapstone"});
 
     AddIncludePaths(executable, "/usr/local/include",
-                    "/opt/homebrew/Cellar/capstone/5.0.5/include/capstone");
+                    "/opt/homebrew/Cellar/capstone/5.0.5/include/capstone",
+                    "./extern");
     AddLibraryPaths(executable, "/usr/local/lib",
                     "/opt/homebrew/Cellar/capstone/5.0.5/lib");
 

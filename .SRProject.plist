@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>description</key>
-	<string>peer into XNU's soul</string>
+	<string>peer deep into XNU's soul</string>
 	<key>language</key>
 	<string>c</string>
 	<key>name</key>

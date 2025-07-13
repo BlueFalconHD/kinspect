@@ -10,6 +10,7 @@
 #include <mach/kern_return.h>
 #include <mach/mach.h>
 
+#include "Input.h"
 #include "Logging.h"
 #include "Terminal.h"
 
@@ -46,6 +47,24 @@ int main(void) {
     return 1;
   }
   cs_option(handle, CS_OPT_DETAIL, CS_OPT_ON);
+
+  // Test the text editor
+  logInfo(logger, "Starting text editor (press Ctrl+Q to exit)...");
+
+  TextEditor *editor = createTextEditor();
+  if (!editor) {
+    logError(logger, "Failed to create text editor");
+  } else {
+    char *buffer = runTextEditor(editor);
+    if (buffer) {
+      logInfo(logger, "Editor buffer contents:");
+      printf("%s\n", buffer);
+      free(buffer);
+    } else {
+      logError(logger, "Failed to get editor buffer");
+    }
+    destroyTextEditor(editor);
+  }
 
   logInfo(logger, "Bye!");
   cs_close(&handle);

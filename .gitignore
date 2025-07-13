@@ -60,4 +60,5 @@ dkms.conf
 build/
 mate.h
 mate
-.cache
+.cache/
+extern/

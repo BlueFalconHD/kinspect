@@ -61,15 +61,6 @@ Logger *createLogger(LoggerConfig config);
 /**
  * Creates a new logger with default configuration that outputs to stdout/stderr.
  *
- * Default configuration includes:
- * - Logger name as provided
- * - Output to stdout for non-error messages
- * - Output to stderr for error messages
- * - Timestamps enabled
- * - Log levels enabled
- * - Logger name included in messages
- * - Minimum log level set to LOG_LEVEL_INFO
- *
  * @param name The name for the logger.
  * @return A pointer to the created Logger instance with default settings.
  */

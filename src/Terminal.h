@@ -76,3 +76,17 @@ bool TerminalSupportsFormatting(void);
 #define aREVERSE "\033[7m"
 #define aHIDDEN "\033[8m"
 #define aSTRIKETHROUGH "\033[9m"
+
+// ANSI escape sequences for terminal control
+#define aCLEAR_SCREEN "\033[2J"
+#define aCLEAR_LINE "\033[2K"
+#define aCURSOR_HOME "\033[H"
+#define aCURSOR_UP "\033[1A"
+#define aCURSOR_DOWN "\033[1B"
+#define aCURSOR_FORWARD "\033[1C"
+#define aCURSOR_BACKWARD "\033[1D"
+#define aSAVE_CURSOR "\033[s"
+#define aRESTORE_CURSOR "\033[u"
+#define aHIDE_CURSOR "\033[?25l"
+#define aSHOW_CURSOR "\033[?25h"
+#define aSET_CURSOR_POSITION(x, y) "\033[" #x ";" #y "H"
