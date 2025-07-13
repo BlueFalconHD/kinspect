@@ -26,6 +26,24 @@ i32 main(void) {
     AddFile(executable, "./src/*.c");
 
     InstallExecutable(executable);
+
+    StringBuilder ldidStringBuilder = StringBuilderCreate(mateState.arena);
+    StringBuilderAppend(mateState.arena, &ldidStringBuilder,
+                        &S("ldid -Sentitlements.plist "));
+    StringBuilderAppend(mateState.arena, &ldidStringBuilder,
+                        &executable.outputPath);
+
+    errno_t ldidRes = RunCommand(ldidStringBuilder.buffer);
+    if (ldidRes != 0) {
+      printf("Error running ldid: %s\n", strerror(ldidRes));
+      return 1;
+    }
+
+    CreateCompileCommandsError cc = CreateCompileCommands(executable);
+    if (cc != COMPILE_COMMANDS_SUCCESS) {
+      printf("Error creating compile commands: %d\n", cc);
+      return 1;
+    }
   }
   EndBuild();
 }
